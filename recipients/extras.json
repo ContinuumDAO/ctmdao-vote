@@ -1,0 +1,30 @@
+[
+    {
+        "address": "0xfa7b4e7324b0a77210c6e53c4965e00b68939daf",
+        "balance": "315.19"
+    },
+    {
+        "address": "0x72b009ea9bfe8e05122251da941945e35bb7b02d",
+        "balance": "8438.25"
+    },
+    {
+        "address": "0x06287d60499974e52106960d4366b2f6e16587b0",
+        "balance": "628.25"
+    },
+    {
+        "address": "0x43d84C81588789749eD74092080594B7bDC78f70",
+        "balance": "15628.40"
+    },
+    {
+        "address": "0x1C81999D87b85c7EfF12dc9B6E8C5C6Cab0Eb5Ca",
+        "balance": "11556.87"
+    },
+    {
+        "address": "0x4fd1223cd3eaa61f92e665837590e39005e9a6d7",
+        "balance": "4206.54"
+    },
+    {
+        "address": "0xfa6EC099ba7Ac110305D368FD60515dC79A6053C",
+        "balance": "2656.06"
+    }
+]
