@@ -2,6 +2,8 @@
 
 ## Description
 
+Token address on Polygon: [0x1FAaf080a77C421e833CdfCbDeaAa273f0eE23b5](https://polygonscan.com/address/0x1FAaf080a77C421e833CdfCbDeaAa273f0eE23b5)
+
 The vested power of veMULTI held on 14th July 2023 00:00:00 was used to generate a MULTIDAOVOTE token. These balances will be used to create the CTMDAOVOTE token. Any wallet address that voted in the three votes:
 
 1. [Compensation for five frontline workers](https://snapshot.org/#/continuumdao.eth/proposal/0xbb6d62d51b972aab25d18b4864cf8034ebf68bcdcc67950011e4eecf0252624b)
