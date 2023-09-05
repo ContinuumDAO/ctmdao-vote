@@ -17,6 +17,6 @@ were considered for the CTMDAOVOTE token. The mechanism used was to use the bala
 
 We also included seven wallets which held a balance of MULTI on 14th July 2023 00:00:00 from active supporters. Their MULTI balance was multiplied by 0.3 to arrive at the CTMDAOVOTE token equivalent. The [total increment](recipients/extras.json) resulting from this process was not large however.
 
-Further comments can be found in the [list generation code](generateFinalList.js).
+Further comments can be found in the [list generation code](app.js).
 
-Final results are available in [JSON format](recipients/finalCTMList.json), and as a [simple text file](finalCTMVoteListOutput.txt).
+Final results are available in [JSON format](recipients/finalCTMList.json), and as a [simple text file](output.txt).
