@@ -1,0 +1,40 @@
+{
+  "_format": "hh-sol-cache-2",
+  "files": {
+    "/home/paddy/Code/Continuum/ctmdao-vote/contracts/CTMDAOVOTE.sol": {
+      "lastModificationDate": 1693926699557,
+      "contentHash": "2d559326d6d630f31a7e0559bbb854df",
+      "sourceName": "contracts/CTMDAOVOTE.sol",
+      "solcConfig": {
+        "version": "0.8.19",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.19"
+      ],
+      "artifacts": [
+        "CTMDAOVOTE"
+      ]
+    }
+  }
+}

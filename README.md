@@ -15,8 +15,12 @@ were considered for the CTMDAOVOTE token. The mechanism used was to use the bala
 3. [Round 2 Voters](recipients/round2Voters.json)
 4. [Round 3 Voters](recipients/round3Voters.json)
 
-We also included seven wallets which held a balance of MULTI on 14th July 2023 00:00:00 from active supporters. Their MULTI balance was multiplied by 0.3 to arrive at the CTMDAOVOTE token equivalent. The [total increment](recipients/extras.json) resulting from this process was not large however.
+We also included seven wallets which held a balance of MULTI on 14th July 2023 00:00:00 from active supporters. Their MULTI balance was multiplied by 0.3 to arrive at the VOTE token equivalent.
+
+To scale the airdrop to represent 10,000,000 (ie. 10% of the total supply), a scale factor was applied to give the CTMDAOVOTE token to each address.
 
 Further comments can be found in the [list generation code](app.js).
 
 Final results are available in [JSON format](recipients/finalCTMList.json), and as a [simple text file](output.txt).
+
+The CTMDAOVOTE token is airdropped as per the [distribution script](scripts/2_distribute.js).

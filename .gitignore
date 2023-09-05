@@ -2,3 +2,5 @@ node_modules
 
 recipients/legacy
 recipients/duplicates.txt
+
+.env
