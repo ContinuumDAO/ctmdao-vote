@@ -4,7 +4,7 @@ const fs = require("fs")
 
 const recipients = fs.readFileSync("recipients/finalCTMList.json")
 
-const ctmDAOVoteAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3"
+const ctmDAOVoteAddress = "0x1FAaf080a77C421e833CdfCbDeaAa273f0eE23b5"
 
 
 async function distribute() {
@@ -19,14 +19,23 @@ async function distribute() {
 
     let nTry = 0
     let failingIndex = 0
-    const FailingIndex = new Error(`ID ${ failingIndex } has failed 3 times.`)
+    const FailingIndex = new Error(`Address ${ failingIndex } has failed 10 times.`)
 
     for(let i = 0; i < Object.keys(recipientList).length - 1; i++) {
         const addr = Object.keys(recipientList)[i]
+        const balAddr = await ctmDAOVote.balanceOf(addr)
+        // if (!balAddr.eq('0')) {
+        //   console.log(`${i}: address ${addr} already minted`)
+        //   continue
+        // }
+        if (i!==70 && i!=72) {
+          console.log(`${i}: address ${addr} already minted`)
+          continue
+        }
         const amountWei = recipientList[addr].ctmDaoVoteWei
         const amount = recipientList[addr].ctmDaoVote
 
-        if(nTry >= 2) {
+        if(nTry >= 9) {
           failingIndex = i
           throw FailingIndex
         }
