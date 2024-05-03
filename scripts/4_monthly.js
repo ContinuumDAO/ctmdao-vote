@@ -15,12 +15,10 @@ rl.question("Name of file in recipients/ with distribution info (eg. april.json)
     distribute()
 })
 
-const distributionsJson = fs.readFileSync(`recipients/${file}`)
-
-const ctmDAOVoteAddress = "0x1FAaf080a77C421e833CdfCbDeaAa273f0eE23b5"
-
 
 const distribute = async () => {
+    const distributionsJson = fs.readFileSync(`recipients/${file}`)
+    const ctmDAOVoteAddress = "0x1FAaf080a77C421e833CdfCbDeaAa273f0eE23b5"
     const [admin] = await ethers.getSigners()
 
     console.log(`Admin: ${admin.address}`)
