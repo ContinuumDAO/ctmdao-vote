@@ -1,16 +1,31 @@
 const { ethers } = require("hardhat")
 const fs = require("fs")
+const readline = require("node:readline")
 
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+})
 
-const recipients = fs.readFileSync("recipients/finalCTMList.json")
+let file = "month.json"
+
+rl.question("Name of file in recipients/ with distribution info (eg. april.json), defaults to month.json: ", fileName => {
+    file = fileName
+    rl.close()
+    distribute()
+})
+
+const distributionsJson = fs.readFileSync(`recipients/${file}`)
 
 const ctmDAOVoteAddress = "0x1FAaf080a77C421e833CdfCbDeaAa273f0eE23b5"
 
 
-async function distribute() {
+const distribute = async () => {
     const [admin] = await ethers.getSigners()
 
-    const recipientList = JSON.parse(recipients)
+    console.log(`Admin: ${admin.address}`)
+
+    const distributions = JSON.parse(distributionsJson)
 
     let totalWei = ethers.BigNumber.from("0")
 
@@ -19,34 +34,25 @@ async function distribute() {
 
     let nTry = 0
     let failingIndex = 0
-    const FailingIndex = new Error(`Address ${ failingIndex } has failed 10 times.`)
+    const FailingIndex = new Error(`Address ${ failingIndex } has failed 3 times.`)
 
-    for(let i = 0; i < Object.keys(recipientList).length - 1; i++) {
-        const addr = Object.keys(recipientList)[i]
-        const balAddr = await ctmDAOVote.balanceOf(addr)
-        // if (!balAddr.eq('0')) {
-        //   console.log(`${i}: address ${addr} already minted`)
-        //   continue
-        // }
-        if (i!==70 && i!=72) {
-          console.log(`${i}: address ${addr} already minted`)
-          continue
-        }
-        const amountWei = recipientList[addr].ctmDaoVoteWei
-        const amount = recipientList[addr].ctmDaoVote
+    for(let i = 0; i < distributions.length; i++) {
+        const addr = distributions[i].address
+        const amount = distributions[i].amount
+        const amountWei = ethers.utils.parseUnits(amount, "ether")
 
-        if(nTry >= 9) {
+        if(nTry >= 2) {
           failingIndex = i
           throw FailingIndex
         }
 
         const gasBal = ethers.utils.formatUnits(await ethers.provider.getBalance(admin.address), "ether")
         console.log(`Gas balance: ${ gasBal } MATIC\n`)
-        console.log(`\n\n${i}: Address ${addr}, minting ${amount}`)
+        console.log(`\n\n${i}: Address ${addr}, minting ${amount}, wei ${amountWei.toString()}`)
 
         try {
-          const tx = await ctmDAOVote.mint(addr, ethers.BigNumber.from(amountWei))
-          await tx.wait(1)
+          // const tx = await ctmDAOVote.mint(addr, amountWei)
+          // await tx.wait()
           totalWei = totalWei.add(amountWei)
           nTry = 0
         } catch(err) {
@@ -61,8 +67,3 @@ async function distribute() {
 
     console.log(`\n\n\nTotal minted: ${total} ContinuumDAOVote, total supply: ${totalSupply} ContinuumDAOVote`)
 }
-
-distribute().catch((error) => {
-    console.error(error)
-    process.exitCode = 1
-})
