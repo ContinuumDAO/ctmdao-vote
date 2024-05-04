@@ -49,8 +49,8 @@ const distribute = async () => {
         console.log(`\n\n${i}: Address ${addr}, minting ${amount}, wei ${amountWei.toString()}`)
 
         try {
-          // const tx = await ctmDAOVote.mint(addr, amountWei)
-          // await tx.wait()
+           const tx = await ctmDAOVote.mint(addr, amountWei)
+           await tx.wait()
           totalWei = totalWei.add(amountWei)
           nTry = 0
         } catch(err) {
