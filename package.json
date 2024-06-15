@@ -6,6 +6,7 @@
     "hardhat": "^2.22.3"
   },
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "mint": "node scripts/4_monthly.js"
   }
 }
